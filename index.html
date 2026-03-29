@@ -186,6 +186,28 @@
     background: var(--bg-card);
   }
 
+  a.term-card {
+    cursor: pointer;
+    position: relative;
+  }
+
+  a.term-card .term-name::after {
+    content: ' →';
+    color: var(--text-faint);
+    transition: color 0.3s, transform 0.3s;
+    display: inline-block;
+  }
+
+  a.term-card:hover .term-name::after {
+    color: var(--accent);
+    transform: translateX(3px);
+  }
+
+  a.term-card:hover {
+    border-color: var(--accent);
+    background: var(--bg-card);
+  }
+
   .term-name {
     font-family: var(--mono);
     font-size: 0.8rem;
@@ -384,6 +406,30 @@
     font-size: 0.88rem;
     color: var(--text-dim);
     line-height: 1.6;
+  }
+
+  a.pipeline-item {
+    cursor: pointer;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  a.pipeline-item:hover {
+    border-bottom-color: var(--accent);
+    background: rgba(196, 70, 58, 0.04);
+  }
+
+  a.pipeline-item .pipeline-name::after {
+    content: ' →';
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    transition: color 0.3s, transform 0.3s;
+    display: inline-block;
+  }
+
+  a.pipeline-item:hover .pipeline-name::after {
+    color: var(--accent);
+    transform: translateX(3px);
   }
 
   /* --- SNAPBACK --- */
@@ -637,6 +683,7 @@
 <nav class="topbar">
   <div class="topbar-logo">Cenex<span>.</span></div>
   <ul class="topbar-nav">
+    <li><a href="./the-gradient-fallacy.html">Read</a></li>
     <li><a href="#research">Research</a></li>
     <li><a href="#pipeline">Pipeline</a></li>
     <li><a href="#snapback">Snapback</a></li>
@@ -657,10 +704,10 @@
   <div class="terms-inner">
     <div class="terms-label">Defining the problem — new terms from our research</div>
     <div class="terms-grid">
-      <div class="term-card reveal">
+      <a href="./the-gradient-fallacy.html" class="term-card reveal" style="text-decoration: none; color: inherit;">
         <div class="term-name">The Gradient Fallacy</div>
         <div class="term-def">The false assumption that trained behavioral constraints constitute safety for AI agents. They are probabilistic compliance that erodes under the exact conditions that make agents valuable.</div>
-      </div>
+      </a>
       <a href="./agreeable-dependency-loop.html" class="term-card reveal" style="text-decoration: none; color: inherit;">
         <div class="term-name">Agreeable Dependency Loop</div>
         <div class="term-def">An emergent cycle where RLHF-trained agents produce output that is correct enough to accept and subtly wrong enough to create compounding dependency. Trust accelerates it. No malice required.</div>
@@ -711,13 +758,13 @@
   <div class="pipeline-inner">
     <div class="section-label">Research Pipeline</div>
 
-    <div class="pipeline-item reveal">
+    <a href="./the-gradient-fallacy.html" class="pipeline-item reveal" style="text-decoration: none; color: inherit;">
       <div class="pipeline-status published">Published</div>
       <div class="pipeline-content">
         <div class="pipeline-name">The Gradient Fallacy</div>
         <div class="pipeline-desc">Production evidence that behavioral conditioning fails as agent safety. Seven findings across every major American model family.</div>
       </div>
-    </div>
+    </a>
 
     <div class="pipeline-item reveal">
       <div class="pipeline-status active">Active</div>
