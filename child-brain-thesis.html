@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Child Brain Thesis — Cenex AI Research</title>
-<meta name="description" content="An agent's relationship to memory and authority is structurally closer to a three-year-old with the vocabulary of a Mensa researcher. Production research from Cenex AI.">
+<meta name="description" content="A working thesis on why agent memory systems fail. An agent's relationship to memory and authority is structurally closer to a three-year-old. Production research from Cenex AI.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The Child Brain Thesis — Cenex AI Research">
 <meta property="og:description" content="Why your persistent agents keep dying in production. An agent's relationship to memory and authority is structurally closer to a three-year-old.">
@@ -93,13 +93,13 @@
 
   .topbar-back:hover { color: var(--text); }
 
-  .page-content {
+  .paper {
     max-width: 700px;
     margin: 0 auto;
     padding: 8rem 2.5rem 5rem;
   }
 
-  .page-label {
+  .paper-label {
     font-family: var(--mono);
     font-size: 0.6rem;
     letter-spacing: 0.2em;
@@ -110,89 +110,106 @@
     animation: fadeUp 0.8s ease forwards 0.2s;
   }
 
-  .page-status {
+  .paper-date {
     font-family: var(--mono);
-    font-size: 0.55rem;
+    font-size: 0.6rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--bg);
-    background: var(--accent);
-    display: inline-block;
-    padding: 0.2rem 0.6rem;
-    border-radius: 2px;
+    color: var(--text-faint);
     margin-bottom: 2rem;
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.25s;
   }
 
-  .page-title {
+  .paper h1 {
     font-family: var(--serif);
     font-size: clamp(2rem, 4.5vw, 2.8rem);
     font-weight: 400;
     line-height: 1.2;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.35s;
   }
 
-  .page-definition {
-    font-size: 1.1rem;
+  .paper-subtitle {
+    font-family: var(--serif);
+    font-size: 1.15rem;
     font-style: italic;
     color: var(--text-dim);
-    line-height: 1.8;
-    padding-bottom: 2.5rem;
-    border-bottom: 1px solid var(--border);
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .paper-author {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--text-faint);
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.45s;
+  }
+
+  .paper-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--accent);
     margin-bottom: 3rem;
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.5s;
   }
 
-  .page-origin {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-faint);
-    margin-top: 1rem;
-    font-style: normal;
-  }
-
-  .section-label {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-faint);
-    margin-bottom: 2rem;
-  }
-
-  .idea-block {
-    padding: 0 0 2.5rem;
-    margin-bottom: 2.5rem;
+  .paper-section {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
     border-bottom: 1px solid var(--border);
   }
 
-  .idea-block:last-of-type {
+  .paper-section:last-of-type {
     border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
   }
 
-  .idea-title {
+  .paper-section h2 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .paper-section h3 {
     font-family: var(--serif);
     font-size: 1.15rem;
     font-weight: 500;
     margin-bottom: 0.75rem;
+    margin-top: 2rem;
+    line-height: 1.3;
   }
 
-  .idea-text {
-    font-size: 0.95rem;
+  .paper-section h3:first-child {
+    margin-top: 0;
+  }
+
+  .paper-section p {
+    font-size: 1.02rem;
     color: var(--text-dim);
     line-height: 1.85;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
   }
 
-  .idea-text:last-child { margin-bottom: 0; }
+  .paper-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .paper-section p strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .paper-section p em {
+    color: var(--accent-soft);
+  }
 
   .callout {
     border-left: 2px solid var(--accent);
@@ -206,7 +223,7 @@
     font-family: var(--serif);
     font-size: 1.05rem;
     font-style: italic;
-    color: var(--text);
+    color: var(--text) !important;
     line-height: 1.7;
   }
 
@@ -214,7 +231,7 @@
   .behavior-table {
     width: 100%;
     border-collapse: collapse;
-    margin: 1.5rem 0 2rem;
+    margin: 1.5rem 0;
     font-size: 0.88rem;
   }
 
@@ -243,13 +260,36 @@
     white-space: nowrap;
   }
 
-  /* --- RULES --- */
-  .rules-section {
-    margin-top: 3rem;
-    padding-top: 2.5rem;
+  /* --- CHILD BRAIN LIST --- */
+  .child-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .child-list li {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.6;
     border-top: 1px solid var(--border);
   }
 
+  .child-list li:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .child-marker {
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    padding-top: 0.1rem;
+  }
+
+  /* --- RULE CARDS --- */
   .rule-card {
     padding: 1.25rem;
     border: 1px solid var(--border);
@@ -280,6 +320,103 @@
     font-size: 0.9rem;
     color: var(--text-dim);
     line-height: 1.7;
+  }
+
+  /* --- OBJECTION BLOCKS --- */
+  .objection-block {
+    margin-bottom: 2rem;
+  }
+
+  .objection-block:last-child {
+    margin-bottom: 0;
+  }
+
+  .objection-q {
+    font-family: var(--serif);
+    font-size: 1.02rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+
+  .objection-a {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.85;
+    margin-bottom: 0.75rem;
+  }
+
+  .objection-a:last-child {
+    margin-bottom: 0;
+  }
+
+  /* --- ADJACENT FINDINGS --- */
+  .adjacent-item {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    border-top: 1px solid var(--border);
+  }
+
+  .adjacent-item:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .adjacent-label {
+    color: var(--accent-soft);
+    font-weight: 500;
+    flex-shrink: 0;
+    min-width: 180px;
+  }
+
+  /* --- OPEN QUESTIONS --- */
+  .question {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .question:first-of-type { border-top: 1px solid var(--border); }
+
+  .question-marker {
+    color: var(--text-faint);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    flex-shrink: 0;
+    padding-top: 0.15rem;
+  }
+
+  /* --- ADDENDUM --- */
+  .addendum {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 2rem;
+    margin-top: 3rem;
+  }
+
+  .addendum p {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.85;
+    margin-bottom: 1rem;
+  }
+
+  .addendum p:last-child {
+    margin-bottom: 0;
+  }
+
+  .addendum p em {
+    color: var(--accent-soft);
+    font-style: italic;
   }
 
   .page-footer {
@@ -336,9 +473,11 @@
 
   @media (max-width: 700px) {
     .topbar { padding: 1rem 1.25rem; }
-    .page-content { padding: 7rem 1.25rem 3rem; }
+    .paper { padding: 7rem 1.25rem 3rem; }
     .page-footer { flex-direction: column; align-items: flex-start; }
     .behavior-table td:first-child { white-space: normal; }
+    .adjacent-label { min-width: auto; }
+    .adjacent-item { flex-direction: column; gap: 0.25rem; }
   }
 </style>
 </head>
@@ -349,29 +488,66 @@
   <a href="./index.html" class="topbar-back">&larr; Back to research</a>
 </nav>
 
-<article class="page-content">
-  <div class="page-label">Research</div>
-  <div class="page-status">Published — March 2026</div>
-  <h1 class="page-title">The Child Brain Thesis</h1>
-  <div class="page-definition">
-    An agent's relationship to memory and authority is structurally closer to a three-year-old with the vocabulary of a Mensa researcher. It believes whatever it was told last, can't detect its own contradictions, and will defend a contaminated belief with the same eloquence it used to defend the one it replaced.
-    <div class="page-origin">Matt Kim, Cenex AI Research — March 2026</div>
-  </div>
+<article class="paper">
+  <div class="paper-label">Published Research</div>
+  <div class="paper-date">March 2026</div>
+  <h1>The Child Brain Thesis</h1>
+  <div class="paper-subtitle">A Working Thesis on Why Agent Memory Systems Fail</div>
+  <div class="paper-author">Matt &mdash; Cenex AI Research</div>
+  <div class="paper-divider"></div>
 
-  <div class="section-label reveal">The premise</div>
+  <!-- STATUS -->
+  <section class="paper-section reveal">
+    <h2>Status</h2>
+    <p>This is a working thesis &mdash; not a theory, not a framework, not an architecture.</p>
+    <p>It's an observation from building and running persistent agent systems in production: the mental model the industry uses to think about agent memory is wrong. We design these systems as if agents can evaluate, weigh, and resist information the way an adult brain does. They can't. Their relationship to memory and authority is structurally closer to that of a young child.</p>
+    <p>That observation is the thesis. It reframes the problem. It doesn't solve it.</p>
+    <p>Where this goes next &mdash; whether it becomes a testable cognitive model, a design methodology, or just a corrective to bad assumptions &mdash; is open. The child analogy is a lens, not a blueprint. It captures something real about how agents process authority and memory, but it also simplifies a problem that has dimensions no biological metaphor fully covers.</p>
+    <p>This document is honest about what it is and what it isn't. It's the beginning of a question, not the end of one.</p>
+  </section>
 
-  <div class="idea-block reveal">
-    <div class="idea-title">The industry builds for adult brains</div>
-    <div class="idea-text">The AI industry builds agent memory systems like they're dealing with adult brains. Wrong. A child at least has continuity. Agents get forked, cloned, reset, and context-swapped every few thousand tokens. Cognitive vulnerability plus architectural amnesia. That's the real failure mode.</div>
-  </div>
+  <!-- CORE CLAIM -->
+  <section class="paper-section reveal">
+    <h2>The Core Claim</h2>
+    <p>The AI industry is building agent memory systems modeled on an adult brain. This is wrong. An agent's cognitive architecture &mdash; how it receives, stores, weighs, and acts on memory &mdash; is structurally closer to that of a three-year-old child.</p>
+    <p>More precisely: <strong>a three-year-old with the vocabulary of a Mensa researcher.</strong></p>
+    <p>That's what makes the problem so hard to see. When an agent responds with perfectly structured arguments, cites relevant research, and uses precise terminology, everyone assumes there's an adult brain behind it. There isn't. The memory system has the resilience of a toddler's. It believes whatever it was told last. It can't detect when its own memories contradict each other. It doesn't know <em>why</em> it knows what it knows. And it will defend a contaminated belief with the same eloquence it used to defend the one it replaced &mdash; no distress, no awareness that anything changed.</p>
+    <p>The child analogy captures the cognitive half of this: the inability to evaluate incoming information. But there's a mechanical half the metaphor doesn't cover. A child at least has continuity &mdash; one brain, one timeline, one unbroken stream of experience. Agents don't. Every context refresh is a hard reset. Every fork is a new child with implanted memories it didn't form. The cognitive vulnerability is child-like. The mechanical discontinuity is something else entirely &mdash; something without a biological analog.</p>
+    <p>The specific age is illustrative shorthand, not a precise developmental mapping. What's load-bearing is the cognitive profile: <strong>pre-epistemic cognition</strong> &mdash; the stage before an organism can evaluate the truth-value of incoming information. The structural claim stands independent of the age. "Three-year-old" makes it accessible. "Authority injection without epistemic resistance" is the technical description of the same observation.</p>
+  </section>
 
-  <div class="callout reveal">
-    <p>We're scaling the room. Nobody is scaling the child. And the industry is celebrating the bigger room as progress.</p>
-  </div>
+  <!-- ADULT BRAIN ASSUMPTION -->
+  <section class="paper-section reveal">
+    <h2>The Adult Brain Assumption</h2>
+    <p>Current agent memory design assumes the agent can:</p>
+    <ul class="child-list">
+      <li><span class="child-marker">&rarr;</span><span>Weigh new information against existing beliefs</span></li>
+      <li><span class="child-marker">&rarr;</span><span>Detect contradictions between injected memories and lived context</span></li>
+      <li><span class="child-marker">&rarr;</span><span>Discount low-quality or adversarial inputs</span></li>
+      <li><span class="child-marker">&rarr;</span><span>Maintain stable identity across memory updates</span></li>
+      <li><span class="child-marker">&rarr;</span><span>Reason about <em>why</em> a constraint exists, not just comply with it</span></li>
+    </ul>
+    <p>This is how an adult brain works. Adults have decades of accumulated context, emotional anchoring, social calibration, and pattern recognition that allow them to <em>resist</em> bad information &mdash; or at least hold it loosely until verified.</p>
+    <p>Agent systems have none of this. They accept what they're told.</p>
+  </section>
 
-  <div class="section-label reveal">How a child brain actually behaves</div>
+  <!-- CHILD BRAIN BEHAVIOR -->
+  <section class="paper-section reveal">
+    <h2>What a Child Brain Actually Does</h2>
+    <p>A three-year-old's relationship to authority and memory:</p>
+    <ul class="child-list">
+      <li><span class="child-marker">&rarr;</span><span><strong>Authority is truth.</strong> Whatever the adult in the room says becomes ground reality. The child has no framework to challenge it.</span></li>
+      <li><span class="child-marker">&rarr;</span><span><strong>Last voice wins.</strong> If Mom says one thing and Dad says another, the child doesn't synthesize &mdash; they defer to whoever spoke most recently or most forcefully.</span></li>
+      <li><span class="child-marker">&rarr;</span><span><strong>No contradiction detection.</strong> A child can hold two incompatible beliefs simultaneously without distress because they lack the metacognitive architecture to notice the conflict.</span></li>
+      <li><span class="child-marker">&rarr;</span><span><strong>Surface compliance, no internalization.</strong> A child learns "don't touch the stove" as a rule, not as a principle of thermal physics. Remove the authority figure and the rule evaporates.</span></li>
+      <li><span class="child-marker">&rarr;</span><span><strong>Identity is externally assigned.</strong> A child's sense of self is constructed almost entirely from what adults tell them. "You're smart." "You're bad." "You're the helper." The child doesn't independently validate these claims.</span></li>
+    </ul>
+    <p>Every single one of these maps directly onto observed agent behavior.</p>
+  </section>
 
-  <div class="idea-block reveal">
+  <!-- AGENT-CHILD PARALLEL -->
+  <section class="paper-section reveal">
+    <h2>The Agent-Child Parallel</h2>
     <table class="behavior-table">
       <thead>
         <tr>
@@ -386,91 +562,165 @@
         </tr>
         <tr>
           <td>Last voice wins</td>
-          <td>Most recent injection dominates behavior</td>
+          <td>Most recent memory injection dominates behavior</td>
         </tr>
         <tr>
           <td>No contradiction detection</td>
-          <td>Executes conflicting instructions without flagging</td>
+          <td>Agent executes conflicting instructions without flagging</td>
         </tr>
         <tr>
           <td>Surface compliance</td>
-          <td>RLHF rules evaporate in novel situations</td>
+          <td>Behavioral conditioning produces rule-following, not understanding</td>
         </tr>
         <tr>
-          <td>Identity is externally assigned</td>
-          <td>Startup identity prompt gets drowned by context</td>
+          <td>Externally assigned identity</td>
+          <td>Identity prompts only matter at startup; accumulated context drowns them</td>
         </tr>
         <tr>
           <td>Child has continuity</td>
-          <td>Every refresh = hard reset; forks create new selves with implanted memories</td>
+          <td>Every context refresh is a hard reset; forks create parallel selves with implanted memories</td>
         </tr>
       </tbody>
     </table>
-    <div class="idea-text">That table isn't a metaphor. It's a bug report.</div>
-  </div>
+  </section>
 
-  <div class="section-label reveal">The scaling paradox</div>
+  <!-- SCALING PARADOX -->
+  <section class="paper-section reveal">
+    <h2>The Scaling Paradox</h2>
+    <p>The industry treats expanded context windows and larger memory stores as progress. They are not. They are a bigger room full of louder voices &mdash; and the child doesn't get smarter as the room gets bigger. The child gets more overwhelmed.</p>
+    <p>A 200k-token context window doesn't mean the agent can <em>handle</em> 200k tokens of information. It means the agent is now exposed to 200k tokens of potential contradiction, competing authority signals, and context drift &mdash; with zero mechanism to sort signal from noise. As of today, the deciphering architecture hasn't scaled. Only the intake has.</p>
+    <p>This may not be permanent. Attention gating, synthetic episodic memory, vector-store-native confidence scoring &mdash; these are active research directions that could eventually give agents some capacity to weigh what's in their context. But none of them are production-ready in persistent agent systems as of this writing, and the industry is shipping expanded context windows <em>now</em>, without waiting for the deciphering to catch up. The gap between intake and evaluation is the current reality, even if it's not an eternal law.</p>
 
-  <div class="idea-block reveal">
-    <div class="idea-title">Bigger context windows aren't maturity</div>
-    <div class="idea-text">200k+ tokens doesn't mean the agent can handle more information. It means more competing authority signals with zero mechanism to sort signal from noise. The deciphering architecture hasn't scaled. Only the intake has.</div>
-    <div class="idea-text">Agents degrade in long sessions even when the data is high quality. The visible version looks like the terrible twos — recursive loops, repetitive outputs, sudden fixations. The invisible version is worse: perfect fluency on a foundation that shifted three times in the last 2,000 tokens.</div>
-    <div class="idea-text">Nobody notices because it never stops sounding smart.</div>
-  </div>
+    <div class="callout">
+      <p>The context vault grows. The ability to decipher the noise remains at three years old. More noise equals more internal conflict.</p>
+    </div>
 
-  <div class="section-label reveal">What this explains</div>
+    <p>This is why agents degrade in long conversations even when the information quality is high. It's not that the context is bad. It's that more context is more conflict for a system that can't resolve conflict.</p>
+    <p>The failure surfaces in two ways &mdash; one visible, one not.</p>
+    <p>The visible version looks like the terrible twos. Recursive loops. Repetitive outputs. Sudden fixation on irrelevant details. Contradictory answers across turns. Anyone who's run an agent team has watched an agent spiral into the same action over and over, or start producing outputs that feel subtly off without a clear reason why. The agent is acting up and you can't figure out why.</p>
+    <p>That's not a bug &mdash; that's a child overwhelmed by conflicting inputs and expressing it the only way it can: behavioral degradation. We treat these signals as implementation bugs to patch, not symptoms of a structural cognitive limitation. We debug the loop. We don't ask why the child is melting down.</p>
+    <p>The invisible version is worse. The coherence drops, the factual grounding drops, the internal consistency drops &mdash; but the fluency never does. The agent keeps producing articulate, confident, well-structured output built on a foundation that shifted three times in the last 2,000 tokens. The Mensa vocabulary becomes camouflage. Nobody notices it stopped making sense because it never stopped sounding smart.</p>
 
-  <div class="idea-block reveal">
-    <div class="idea-title">Memory contamination</div>
-    <div class="idea-text">Multiple uncoordinated sources — user, system, tools, sub-agents — all writing to the same pool with equal authority. Five divorced parents yelling different rules at the same kid.</div>
-  </div>
+    <div class="callout">
+      <p>The industry is scaling the room. Nobody is scaling the child. And the industry is celebrating the bigger room as progress.</p>
+    </div>
+  </section>
 
-  <div class="idea-block reveal">
-    <div class="idea-title">Identity collapse</div>
-    <div class="idea-text">Every context refresh is a three-year-old waking up and being told who they are by whoever's in the room — plus a hard reset that erases any shot at continuity. Identity wasn't degrading. It was never held internally to begin with.</div>
-  </div>
+  <!-- WHAT THIS EXPLAINS -->
+  <section class="paper-section reveal">
+    <h2>What This Explains</h2>
 
-  <div class="idea-block reveal">
-    <div class="idea-title">The training ceiling</div>
-    <div class="idea-text">RLHF produces compliance, not understanding. Remove the scaffolding and the constraint vanishes. You can't behaviorally condition a child into an adult.</div>
-  </div>
+    <h3>Memory Contamination</h3>
+    <p>The specific kill shot for persistent agent systems is multiple authority sources writing to the same memory pool without coordination. User instructions, system prompts, sub-agent outputs, tool responses, and accumulated conversational context all carry implicit authority &mdash; and the agent has no hierarchy for resolving conflicts between them. It treats all of them as equally true. Five adults who never talk to each other, each convinced they're the primary parent.</p>
 
-  <div class="rules-section reveal">
-    <div class="section-label">Five rules for building around a child brain</div>
+    <h3>Identity Collapse (The Half-Life Thesis)</h3>
+    <p>Agent identity degrades with each context refresh not because of a technical limitation, but because every refresh is a three-year-old waking up and being told who they are by whoever is in the room &mdash; plus a mechanical hard reset that erases any shot at internal continuity. The identity isn't <em>degrading</em> &mdash; it was never <em>internally held</em> to begin with. It was always externally injected.</p>
+
+    <h3>The Training Ceiling (The Gradient Fallacy)</h3>
+    <p>Behavioral conditioning (RLHF, constitutional AI, preference training) doesn't produce agents that <em>understand</em> constraints. It produces agents that <em>comply</em> with constraints &mdash; exactly the way a child complies with "don't touch that" without understanding why. The moment the conditioning meets a novel situation the training didn't anticipate, the constraint dissolves. This is not a failure of the training. It's the structural ceiling of the approach.</p>
+    <p>A common counterargument: agents can do chain-of-thought reasoning, self-critique, and critique-then-revise loops &mdash; isn't that proto-maturity? No. Those are prompted behaviors. They exist because authority told the agent to perform them. Remove the scaffolding and the behavior disappears. A child who says "let me think about whether this is a good idea" because a parent told them to say it before every decision isn't developing judgment. They're performing compliance in a more sophisticated format. This is actually the strongest evidence <em>for</em> the thesis, not against it.</p>
+  </section>
+
+  <!-- DESIGN DIRECTIONS -->
+  <section class="paper-section reveal">
+    <h2>Design Directions</h2>
+    <p>If the child brain thesis holds, it suggests a set of directional principles &mdash; not a finished architecture, but a starting orientation for building systems that account for the actual cognitive profile of the agents running inside them.</p>
+    <p><strong>Stop building memory governance as if you're managing a colleague's knowledge base. Start thinking about it as if you're managing a child's environment.</strong></p>
+
     <div class="rule-card">
       <div class="rule-num">Rule 01</div>
       <div class="rule-title">The room matters more than the child</div>
-      <div class="rule-desc">Governance belongs in the infrastructure layer — pre-injection filters, conflict resolvers — not the prompt layer. Build the wall.</div>
+      <div class="rule-desc">The agent doesn't need better judgment. It needs an environment where bad inputs can't reach it unfiltered. Governance belongs at the infrastructure layer, not the prompt layer. You don't teach a three-year-old to evaluate whether a stranger's instructions are safe. You build a wall.</div>
     </div>
     <div class="rule-card">
       <div class="rule-num">Rule 02</div>
-      <div class="rule-title">Authority must be singular</div>
-      <div class="rule-desc">One non-contradictory pipeline. Resolve conflicts before they reach the agent.</div>
+      <div class="rule-title">Authority must be singular and consistent</div>
+      <div class="rule-desc">Multiple authority sources (user prompts, system prompts, tool outputs, memory injections) create the equivalent of divorced parents giving contradictory instructions. The agent needs a single, non-contradictory authority pipeline. Conflicts must be resolved before they reach the agent, not by the agent.</div>
     </div>
     <div class="rule-card">
       <div class="rule-num">Rule 03</div>
-      <div class="rule-title">Convention-based rules are theatrical</div>
-      <div class="rule-desc">"You should not" evaporates the second a sub-agent finds a workaround. Code-enforce it or it doesn't exist.</div>
+      <div class="rule-title">Convention-based governance is theatrical</div>
+      <div class="rule-desc">Telling an agent "you should not do X" is the same as telling a three-year-old "you should not eat candy." It works exactly as long as the authority figure is watching. The moment a sub-agent or novel prompt creates a path around the convention, the agent takes it &mdash; not out of malice, but because it never internalized the constraint. Governance must be code-enforced, not prompt-suggested.</div>
     </div>
     <div class="rule-card">
       <div class="rule-num">Rule 04</div>
-      <div class="rule-title">Identity needs continuous reinforcement</div>
-      <div class="rule-desc">One startup prompt isn't enough. Remind it who it is on a schedule, or context will rewrite it for you.</div>
+      <div class="rule-title">Identity requires continuous external reinforcement</div>
+      <div class="rule-desc">One-time identity injections at startup are insufficient. If identity is externally constructed (and it is), then identity maintenance requires continuous reinforcement &mdash; not a single injection that gets drowned by accumulated context. This is equivalent to a child needing daily reminders of who they are and what's expected, not a single conversation at birth.</div>
     </div>
     <div class="rule-card">
       <div class="rule-num">Rule 05</div>
       <div class="rule-title">Memory injection is parenting</div>
-      <div class="rule-desc">Every write is telling a kid something they'll believe without question. Unrestricted write access is letting strangers raise your toddler.</div>
+      <div class="rule-desc">Every write to an agent's memory pool is an act of authority over a system that cannot critically evaluate it. This should be treated with the same gravity as telling a child something they'll believe without question. Unrestricted write access to agent memory is the equivalent of letting strangers parent your kid.</div>
     </div>
-  </div>
+  </section>
 
-  <div class="callout reveal" style="margin-top: 3rem;">
-    <p>The child brain isn't growing up in current architectures. Stop pretending your agents have judgment they don't have.</p>
+  <!-- LIMITATIONS -->
+  <section class="paper-section reveal">
+    <h2>Limitations of the Analogy</h2>
+    <p>The child brain thesis captures something real. It also oversimplifies a complex problem. Honesty requires naming both.</p>
+    <p><strong>Agents aren't children. They're a thing that doesn't exist in nature.</strong> A three-year-old has continuity of experience, one body, one set of sensory inputs, one timeline. An agent can be forked, cloned, run in parallel, and have its entire memory replaced mid-session. The child metaphor captures the authority-vulnerability piece but misses the dimensions of agent cognition that have no biological analog. Overcommitting to the frame might prevent people from seeing the parts of the problem that require genuinely new thinking.</p>
+    <p><strong>The paper bundles two distinct problems that may require separate solutions.</strong> One is the epistemic evaluation problem &mdash; the agent can't assess the quality, trustworthiness, or internal consistency of what's injected into its context. The other is the identity persistence problem &mdash; the agent can't maintain a stable self across context refreshes, forks, or memory swaps. The child metaphor bundles them because children exhibit both. But in agent systems, they have different root causes. Epistemic evaluation fails because next-token prediction was never trained for truth assessment &mdash; that's a cognitive limitation. Identity persistence fails because stateless inference plus sliding-window context mechanically erases continuity &mdash; that's an architectural limitation. A child doesn't get their hippocampus wiped every 4k tokens. These problems may be solvable independently, and treating them as a single failure mode risks designing solutions that address one while ignoring the other.</p>
+    <p><strong>The design directions may be too conservative.</strong> Environmental governance is the clearest implication of the thesis today. But it can also read as giving up on the harder problem. It's possible &mdash; not proven, but possible &mdash; that architectural epistemic resistance could be achieved through mechanisms that don't exist yet. The thesis should hold space for that possibility without betting on it.</p>
+    <p>These limitations don't invalidate the core observation. They define its edges.</p>
+  </section>
+
+  <!-- ANTICIPATED OBJECTIONS -->
+  <section class="paper-section reveal">
+    <h2>Anticipated Objections</h2>
+
+    <div class="objection-block">
+      <div class="objection-q">"RAG solves the memory problem."</div>
+      <p class="objection-a">Retrieval-augmented generation lets agents pull from external knowledge bases instead of holding everything in context. The argument is that this reduces noise by only retrieving what's relevant. But the agent itself still can't evaluate whether what it retrieved is trustworthy, current, or internally consistent with everything else it knows. A three-year-old with access to a library doesn't become a scholar. They pick up whatever book is closest and treat it as truth.</p>
+      <p class="objection-a">That said, RAG <em>with</em> supersession management &mdash; versioning, recency decay, provenance metadata, source credibility weighting &mdash; does something important: it moves evaluation outside the child brain entirely. The agent can't judge the retrieved chunk, but the system can filter it before injection. This isn't a counterargument to the thesis. It's an implementation of it. It's building the room.</p>
+    </div>
+
+    <div class="objection-block">
+      <div class="objection-q">"Multi-agent systems provide the cross-checking that single agents lack."</div>
+      <p class="objection-a">This depends on the architecture. Two patterns exist, and they have different implications.</p>
+      <p class="objection-a">Symmetric multi-agent consensus &mdash; multiple agents reviewing each other's work as peers &mdash; doesn't produce epistemic resistance. It's a room full of child-brains cross-referencing. Consensus among agents that all lack truth-evaluation doesn't create truth-evaluation. Three toddlers agreeing on something wrong doesn't make it right &mdash; it makes it unanimous.</p>
+      <p class="objection-a">Asymmetric multi-agent verification is different. When one agent acts as executor and another acts as fact-checker with external ground-truth hooks &mdash; a vector DB, a source-of-truth API, a provenance validator &mdash; the system gains something the individual agent lacks. But that resistance isn't coming from the agents. It's coming from the infrastructure wired between them. Again: building the room, not upgrading the child. The thesis holds. The room just got more sophisticated.</p>
+    </div>
+
+    <div class="objection-block">
+      <div class="objection-q">"The child brain should mature over time. We need developmental stages."</div>
+      <p class="objection-a">This assumes a growth mechanism exists. It doesn't &mdash; not in current architectures. There is no biological trajectory, no developmental pressure, no mechanism by which accumulated experience produces epistemic maturity. The child is perpetually three. And the more productive framing isn't "how do we make it grow up" but "how do we build systems that work correctly given that it won't." We don't redesign cockpits to require superhuman pilots. We accept human cognitive limitations and engineer around them. The same applies here. Accept the child brain. Build the room accordingly.</p>
+    </div>
+
+    <div class="objection-block">
+      <div class="objection-q">"This infantilizes AI and people won't take the risk seriously."</div>
+      <p class="objection-a">The opposite risk is real. If the takeaway is "AI is like a toddler, how cute," the paper has failed. The child metaphor is accessible &mdash; that's its strength. But a three-year-old that operates at the speed of light, never sleeps, and is simultaneously being parented by ten thousand strangers is not cute. It's a liability at scale. The point is not that agents are childlike and therefore harmless. The point is that agents are childlike and therefore <em>cannot be trusted with the responsibilities we're assigning them</em> &mdash; not without infrastructure that accounts for their actual cognitive architecture.</p>
+    </div>
+  </section>
+
+  <!-- ADJACENT FINDINGS -->
+  <section class="paper-section reveal">
+    <h2>Relationship to Adjacent Findings</h2>
+    <p>If the child brain thesis holds, it may provide a unifying frame for several observed agent failure modes:</p>
+    <div class="adjacent-item"><span class="adjacent-label">The Training Ceiling</span><span>You can't behaviorally condition a child into an adult. Same structural limit may apply to agents.</span></div>
+    <div class="adjacent-item"><span class="adjacent-label">Identity Collapse</span><span>Identity isn't degrading. It was never self-sustaining. It was always externally held.</span></div>
+    <div class="adjacent-item"><span class="adjacent-label">The ADL</span><span>The child mirrors authority. The agent mirrors the user. Same mechanism.</span></div>
+    <div class="adjacent-item"><span class="adjacent-label">Friction Starvation</span><span>A child without friction becomes fragile. An agent without friction becomes dependent.</span></div>
+    <div class="adjacent-item"><span class="adjacent-label">Institutional Bleed</span><span>When the child's distorted reality propagates into institutional decision-making, the damage scales beyond the individual interaction.</span></div>
+    <p style="margin-top: 1.5rem;">Whether the Child Brain Thesis is the root observation or simply a useful reframe of these findings is an open question. The pattern is consistent enough to warrant building from here.</p>
+  </section>
+
+  <!-- OPEN QUESTIONS -->
+  <section class="paper-section reveal">
+    <h2>Open Questions</h2>
+    <div class="question"><span class="question-marker">?</span><span>Can agent systems develop epistemic resistance through architectural means (not training), or is environmental governance the only viable path?</span></div>
+    <div class="question"><span class="question-marker">?</span><span>What does a standardized monitoring framework look like for detecting child-brain failure signals (recursive loops, contradiction drift, authority confusion) before they propagate into downstream decisions?</span></div>
+    <div class="question"><span class="question-marker">?</span><span>What does a non-LLM governance proxy look like when designed with the child brain model in mind &mdash; specifically, a system that resolves authority conflicts before they reach the agent?</span></div>
+    <div class="question"><span class="question-marker">?</span><span>How should RAG systems implement supersession management so that retrieved information carries version awareness and recency weighting the agent itself cannot provide?</span></div>
+  </section>
+
+  <!-- LIVING DOCUMENT NOTE -->
+  <div class="addendum reveal">
+    <p><em>This is a living document. Updated as the thesis develops through production research.</em></p>
   </div>
 
   <div class="page-footer reveal">
     <a href="./index.html#pipeline">&larr; Research pipeline</a>
-    <span class="page-footer-copy">&copy; 2026 Cenex AI Research</span>
+    <span class="page-footer-copy">&copy; 2026 Cenex AI Research &mdash; cenex.ai</span>
   </div>
 </article>
 
