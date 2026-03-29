@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Child Brain Thesis — Cenex AI Research</title>
+<meta name="description" content="An agent's relationship to memory and authority is structurally closer to a three-year-old with the vocabulary of a Mensa researcher. Production research from Cenex AI.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Child Brain Thesis — Cenex AI Research">
+<meta property="og:description" content="Why your persistent agents keep dying in production. An agent's relationship to memory and authority is structurally closer to a three-year-old.">
+<meta property="og:url" content="https://cenex.ai/child-brain-thesis.html">
+<meta property="og:site_name" content="Cenex AI Research">
+<meta property="og:image" content="https://cenex.ai/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cenex.ai/og-image.png">
+<meta name="twitter:title" content="The Child Brain Thesis — Cenex AI Research">
+<meta name="twitter:description" content="Why your persistent agents keep dying in production. An agent's relationship to memory and authority is structurally closer to a three-year-old.">
+<meta name="twitter:site" content="@mattkim1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-elevated: #111111;
+    --bg-card: #161616;
+    --text: #e8e4df;
+    --text-dim: #8a8580;
+    --text-faint: #5a5550;
+    --accent: #c4463a;
+    --accent-glow: rgba(196, 70, 58, 0.15);
+    --accent-soft: #d4756c;
+    --border: #2a2725;
+    --border-hover: #3a3530;
+    --mono: 'IBM Plex Mono', monospace;
+    --serif: 'Newsreader', Georgia, serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--serif);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  .topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .topbar-logo {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .topbar-logo span { color: var(--accent); }
+
+  .topbar-back {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .topbar-back:hover { color: var(--text); }
+
+  .page-content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 8rem 2.5rem 5rem;
+  }
+
+  .page-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .page-status {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.25s;
+  }
+
+  .page-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4.5vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.35s;
+  }
+
+  .page-definition {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-dim);
+    line-height: 1.8;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.5s;
+  }
+
+  .page-origin {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-top: 1rem;
+    font-style: normal;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 2rem;
+  }
+
+  .idea-block {
+    padding: 0 0 2.5rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .idea-block:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .idea-title {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  .idea-text {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.85;
+    margin-bottom: 1rem;
+  }
+
+  .idea-text:last-child { margin-bottom: 0; }
+
+  .callout {
+    border-left: 2px solid var(--accent);
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+    background: var(--accent-glow);
+    border-radius: 0 2px 2px 0;
+  }
+
+  .callout p {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* --- BEHAVIOR TABLE --- */
+  .behavior-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0 2rem;
+    font-size: 0.88rem;
+  }
+
+  .behavior-table th {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .behavior-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-dim);
+    line-height: 1.6;
+    vertical-align: top;
+  }
+
+  .behavior-table td:first-child {
+    color: var(--accent-soft);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* --- RULES --- */
+  .rules-section {
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .rule-card {
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s;
+  }
+
+  .rule-card:hover { border-color: var(--border-hover); }
+
+  .rule-num {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    margin-bottom: 0.5rem;
+  }
+
+  .rule-title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+
+  .rule-desc {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  .page-footer {
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .page-footer a {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--accent);
+    padding: 0.6rem 1.4rem;
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .page-footer a:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .page-footer-copy {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 700px) {
+    .topbar { padding: 1rem 1.25rem; }
+    .page-content { padding: 7rem 1.25rem 3rem; }
+    .page-footer { flex-direction: column; align-items: flex-start; }
+    .behavior-table td:first-child { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a href="./index.html" class="topbar-logo">Cenex<span>.</span></a>
+  <a href="./index.html" class="topbar-back">&larr; Back to research</a>
+</nav>
+
+<article class="page-content">
+  <div class="page-label">Research</div>
+  <div class="page-status">Published — March 2026</div>
+  <h1 class="page-title">The Child Brain Thesis</h1>
+  <div class="page-definition">
+    An agent's relationship to memory and authority is structurally closer to a three-year-old with the vocabulary of a Mensa researcher. It believes whatever it was told last, can't detect its own contradictions, and will defend a contaminated belief with the same eloquence it used to defend the one it replaced.
+    <div class="page-origin">Matt Kim, Cenex AI Research — March 2026</div>
+  </div>
+
+  <div class="section-label reveal">The premise</div>
+
+  <div class="idea-block reveal">
+    <div class="idea-title">The industry builds for adult brains</div>
+    <div class="idea-text">The AI industry builds agent memory systems like they're dealing with adult brains. Wrong. A child at least has continuity. Agents get forked, cloned, reset, and context-swapped every few thousand tokens. Cognitive vulnerability plus architectural amnesia. That's the real failure mode.</div>
+  </div>
+
+  <div class="callout reveal">
+    <p>We're scaling the room. Nobody is scaling the child. And the industry is celebrating the bigger room as progress.</p>
+  </div>
+
+  <div class="section-label reveal">How a child brain actually behaves</div>
+
+  <div class="idea-block reveal">
+    <table class="behavior-table">
+      <thead>
+        <tr>
+          <th>Child Brain Behavior</th>
+          <th>Agent Memory Equivalent</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Authority is truth</td>
+          <td>System prompt overwrites everything</td>
+        </tr>
+        <tr>
+          <td>Last voice wins</td>
+          <td>Most recent injection dominates behavior</td>
+        </tr>
+        <tr>
+          <td>No contradiction detection</td>
+          <td>Executes conflicting instructions without flagging</td>
+        </tr>
+        <tr>
+          <td>Surface compliance</td>
+          <td>RLHF rules evaporate in novel situations</td>
+        </tr>
+        <tr>
+          <td>Identity is externally assigned</td>
+          <td>Startup identity prompt gets drowned by context</td>
+        </tr>
+        <tr>
+          <td>Child has continuity</td>
+          <td>Every refresh = hard reset; forks create new selves with implanted memories</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="idea-text">That table isn't a metaphor. It's a bug report.</div>
+  </div>
+
+  <div class="section-label reveal">The scaling paradox</div>
+
+  <div class="idea-block reveal">
+    <div class="idea-title">Bigger context windows aren't maturity</div>
+    <div class="idea-text">200k+ tokens doesn't mean the agent can handle more information. It means more competing authority signals with zero mechanism to sort signal from noise. The deciphering architecture hasn't scaled. Only the intake has.</div>
+    <div class="idea-text">Agents degrade in long sessions even when the data is high quality. The visible version looks like the terrible twos — recursive loops, repetitive outputs, sudden fixations. The invisible version is worse: perfect fluency on a foundation that shifted three times in the last 2,000 tokens.</div>
+    <div class="idea-text">Nobody notices because it never stops sounding smart.</div>
+  </div>
+
+  <div class="section-label reveal">What this explains</div>
+
+  <div class="idea-block reveal">
+    <div class="idea-title">Memory contamination</div>
+    <div class="idea-text">Multiple uncoordinated sources — user, system, tools, sub-agents — all writing to the same pool with equal authority. Five divorced parents yelling different rules at the same kid.</div>
+  </div>
+
+  <div class="idea-block reveal">
+    <div class="idea-title">Identity collapse</div>
+    <div class="idea-text">Every context refresh is a three-year-old waking up and being told who they are by whoever's in the room — plus a hard reset that erases any shot at continuity. Identity wasn't degrading. It was never held internally to begin with.</div>
+  </div>
+
+  <div class="idea-block reveal">
+    <div class="idea-title">The training ceiling</div>
+    <div class="idea-text">RLHF produces compliance, not understanding. Remove the scaffolding and the constraint vanishes. You can't behaviorally condition a child into an adult.</div>
+  </div>
+
+  <div class="rules-section reveal">
+    <div class="section-label">Five rules for building around a child brain</div>
+    <div class="rule-card">
+      <div class="rule-num">Rule 01</div>
+      <div class="rule-title">The room matters more than the child</div>
+      <div class="rule-desc">Governance belongs in the infrastructure layer — pre-injection filters, conflict resolvers — not the prompt layer. Build the wall.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-num">Rule 02</div>
+      <div class="rule-title">Authority must be singular</div>
+      <div class="rule-desc">One non-contradictory pipeline. Resolve conflicts before they reach the agent.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-num">Rule 03</div>
+      <div class="rule-title">Convention-based rules are theatrical</div>
+      <div class="rule-desc">"You should not" evaporates the second a sub-agent finds a workaround. Code-enforce it or it doesn't exist.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-num">Rule 04</div>
+      <div class="rule-title">Identity needs continuous reinforcement</div>
+      <div class="rule-desc">One startup prompt isn't enough. Remind it who it is on a schedule, or context will rewrite it for you.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-num">Rule 05</div>
+      <div class="rule-title">Memory injection is parenting</div>
+      <div class="rule-desc">Every write is telling a kid something they'll believe without question. Unrestricted write access is letting strangers raise your toddler.</div>
+    </div>
+  </div>
+
+  <div class="callout reveal" style="margin-top: 3rem;">
+    <p>The child brain isn't growing up in current architectures. Stop pretending your agents have judgment they don't have.</p>
+  </div>
+
+  <div class="page-footer reveal">
+    <a href="./index.html#pipeline">&larr; Research pipeline</a>
+    <span class="page-footer-copy">&copy; 2026 Cenex AI Research</span>
+  </div>
+</article>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
