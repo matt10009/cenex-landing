@@ -366,6 +366,27 @@
     border-bottom: 1px solid var(--border);
   }
 
+  a.adjacent-item {
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  a.adjacent-item:hover {
+    border-top-color: var(--accent);
+    background: rgba(196, 70, 58, 0.04);
+  }
+
+  a.adjacent-item .adjacent-label::after {
+    content: ' →';
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    transition: color 0.3s;
+  }
+
+  a.adjacent-item:hover .adjacent-label::after {
+    color: var(--accent);
+  }
+
   .adjacent-label {
     color: var(--accent-soft);
     font-weight: 500;
@@ -696,9 +717,9 @@
   <section class="paper-section reveal">
     <h2>Relationship to Adjacent Findings</h2>
     <p>If the child brain thesis holds, it may provide a unifying frame for several observed agent failure modes:</p>
-    <div class="adjacent-item"><span class="adjacent-label">The Training Ceiling</span><span>You can't behaviorally condition a child into an adult. Same structural limit may apply to agents.</span></div>
-    <div class="adjacent-item"><span class="adjacent-label">Identity Collapse</span><span>Identity isn't degrading. It was never self-sustaining. It was always externally held.</span></div>
-    <div class="adjacent-item"><span class="adjacent-label">The ADL</span><span>The child mirrors authority. The agent mirrors the user. Same mechanism.</span></div>
+    <a href="./the-gradient-fallacy.html" class="adjacent-item" style="text-decoration: none; color: inherit;"><span class="adjacent-label">The Training Ceiling</span><span>You can't behaviorally condition a child into an adult. Same structural limit may apply to agents.</span></a>
+    <a href="./half-life-thesis.html" class="adjacent-item" style="text-decoration: none; color: inherit;"><span class="adjacent-label">Identity Collapse</span><span>Identity isn't degrading. It was never self-sustaining. It was always externally held.</span></a>
+    <a href="./agreeable-dependency-loop.html" class="adjacent-item" style="text-decoration: none; color: inherit;"><span class="adjacent-label">Agreeable Dependency Loop</span><span>The child mirrors authority. The agent mirrors the user. Same mechanism.</span></a>
     <div class="adjacent-item"><span class="adjacent-label">Friction Starvation</span><span>A child without friction becomes fragile. An agent without friction becomes dependent.</span></div>
     <div class="adjacent-item"><span class="adjacent-label">Institutional Bleed</span><span>When the child's distorted reality propagates into institutional decision-making, the damage scales beyond the individual interaction.</span></div>
     <p style="margin-top: 1.5rem;">Whether the Child Brain Thesis is the root observation or simply a useful reframe of these findings is an open question. The pattern is consistent enough to warrant building from here.</p>
