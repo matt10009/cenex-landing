@@ -444,6 +444,89 @@
     transform: translateX(3px);
   }
 
+  /* --- EMAIL CAPTURE --- */
+  .email-section {
+    padding: 4rem 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .email-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .email-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 1rem;
+  }
+
+  .email-heading {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+  }
+
+  .email-desc {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .email-form {
+    display: flex;
+    gap: 0.75rem;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .email-input {
+    flex: 1;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .email-input::placeholder {
+    color: var(--text-faint);
+  }
+
+  .email-input:focus {
+    border-color: var(--accent-soft);
+  }
+
+  .email-submit {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.75rem 1.4rem;
+    background: transparent;
+    border: 1px solid var(--text-dim);
+    border-radius: 2px;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+  }
+
+  .email-submit:hover {
+    background: var(--text);
+    color: var(--bg);
+  }
+
   /* --- SNAPBACK --- */
   .snapback-section {
     padding: 5rem 2.5rem;
@@ -680,7 +763,8 @@
     .topbar-nav a { font-size: 0.6rem; }
     .hero { padding: 7rem 1.25rem 4rem; }
     .terms-section, .paper-section, .pipeline-section,
-    .snapback-section, .thesis-section, .about-section { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .email-section, .snapback-section, .thesis-section, .about-section { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .email-form { flex-direction: column; }
     .paper-header, .paper-abstract, .paper-findings, .paper-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
     .pipeline-item { flex-direction: column; gap: 0.5rem; }
     .pipeline-status { width: auto; }
@@ -825,6 +909,19 @@
         <div class="pipeline-desc">Hierarchical agent memory with half-life decay, hybrid scoring, and per-agent calibration. Solving the problem that makes every other agent problem worse.</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- EMAIL CAPTURE -->
+<section class="email-section">
+  <div class="email-inner reveal">
+    <div class="email-label">Stay in the loop</div>
+    <h3 class="email-heading">New research and project releases</h3>
+    <p class="email-desc">No spam. No schedule. Just updates when we publish new findings or ship something.</p>
+    <form class="email-form" action="https://buttondown.com/api/emails/embed-subscribe/cenex" method="post" target="popupwindow">
+      <input type="email" name="email" class="email-input" placeholder="you@email.com" required>
+      <button type="submit" class="email-submit">Subscribe</button>
+    </form>
   </div>
 </section>
 
