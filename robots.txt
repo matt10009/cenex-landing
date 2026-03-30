@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cenex.ai/sitemap.xml
