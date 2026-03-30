@@ -8,6 +8,7 @@ Static HTML site for Cenex AI Research, hosted on Vercel at cenex.ai. No framewo
 - `the-gradient-fallacy.html` — Full formatted paper
 - `agreeable-dependency-loop.html` — ADL term definition page
 - `half-life-thesis.html` — Half-Life thesis research preview
+- `child-brain-thesis.html` — Full Child Brain Thesis paper
 - `og-image.png` — Share image for social cards
 - `og-generator.html` — Tool for generating OG images (not part of the site)
 
@@ -23,7 +24,7 @@ Static HTML site for Cenex AI Research, hosted on Vercel at cenex.ai. No framewo
 - Domain: cenex.ai
 
 ## Adding New Pages
-1. Copy the structure from `agreeable-dependency-loop.html` or `half-life-thesis.html`
+1. For full papers, copy from `the-gradient-fallacy.html` or `child-brain-thesis.html`. For shorter term pages, copy from `agreeable-dependency-loop.html` or `half-life-thesis.html`
 2. Use the same CSS variables, topbar, and reveal animation pattern
 3. Wrap corresponding cards/pipeline items on index.html in `<a>` tags — clickable styles apply automatically
 4. Push to main — Vercel deploys automatically
