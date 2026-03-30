@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snapback — Clear Thinking in the AI Era — Cenex AI Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-elevated: #111111;
+    --bg-card: #161616;
+    --text: #e8e4df;
+    --text-dim: #8a8580;
+    --text-faint: #5a5550;
+    --accent: #c4463a;
+    --accent-glow: rgba(196, 70, 58, 0.15);
+    --accent-soft: #d4756c;
+    --accent-warm: #c8956c;
+    --border: #2a2725;
+    --border-hover: #3a3530;
+    --mono: 'IBM Plex Mono', monospace;
+    --serif: 'Newsreader', Georgia, serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--serif);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* --- NAV --- */
+  .topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .topbar-logo {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .topbar-logo span { color: var(--accent); }
+
+  .topbar-back {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .topbar-back:hover { color: var(--text); }
+
+  /* --- HERO --- */
+  .hero {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 9rem 2.5rem 4rem;
+    text-align: center;
+  }
+
+  .hero-badge {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    display: inline-block;
+    padding: 0.3rem 0.75rem;
+    border-radius: 2px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 18px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-subtitle {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    line-height: 1.85;
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    text-decoration: none;
+    padding: 0.8rem 1.6rem;
+    border: 1px solid var(--text-dim);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .hero-cta:hover {
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  /* --- FEATURES --- */
+  .features-section {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 2.5rem 4rem;
+  }
+
+  .feature-block {
+    padding: 3rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .feature-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    margin-bottom: 1rem;
+  }
+
+  .feature-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .feature-text {
+    font-size: 1rem;
+    color: var(--text-dim);
+    line-height: 1.85;
+    margin-bottom: 1rem;
+  }
+
+  .feature-text:last-child { margin-bottom: 0; }
+
+  .feature-text em {
+    color: var(--accent-soft);
+    font-style: italic;
+  }
+
+  /* --- CALLOUT --- */
+  .callout {
+    border-left: 2px solid var(--accent);
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+    background: var(--accent-glow);
+    border-radius: 0 2px 2px 0;
+  }
+
+  .callout p {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* --- SCREENSHOTS --- */
+  .screenshots {
+    padding: 3rem 0;
+    border-top: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .screenshots-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2.5rem;
+  }
+
+  .screenshots-scroll {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    padding: 0 2.5rem 1.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .screenshots-scroll::-webkit-scrollbar { display: none; }
+
+  .screenshot-item {
+    flex: 0 0 220px;
+    scroll-snap-align: start;
+  }
+
+  .screenshot-item img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+
+  .screenshot-caption {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-top: 0.75rem;
+    text-align: center;
+  }
+
+  /* --- BOTTOM --- */
+  .bottom-section {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 2.5rem 5rem;
+  }
+
+  .bottom-cta {
+    padding: 3rem 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .bottom-cta-text {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    text-decoration: none;
+    padding: 0.8rem 1.6rem;
+    border: 1px solid var(--text-dim);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .cta-button:hover {
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  /* --- FOOTER --- */
+  .page-footer {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 2.5rem 5rem;
+  }
+
+  .page-footer-inner {
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .page-footer-inner a {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .page-footer-inner a:hover { color: var(--accent-soft); }
+
+  .page-footer-copy {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
+  }
+
+  /* --- ANIMATIONS --- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 700px) {
+    .topbar { padding: 1rem 1.25rem; }
+    .hero { padding: 7rem 1.25rem 3rem; }
+    .features-section { padding: 0 1.25rem 3rem; }
+    .screenshots-scroll { padding: 0 1.25rem 1.5rem; }
+    .screenshots-label { padding: 0 1.25rem; }
+    .bottom-section { padding: 0 1.25rem 4rem; }
+    .page-footer { padding: 0 1.25rem 4rem; }
+    .page-footer-inner { flex-direction: column; align-items: flex-start; }
+    .screenshot-item { flex: 0 0 180px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a href="./index.html" class="topbar-logo">Cenex<span>.</span></a>
+  <a href="./index.html" class="topbar-back">← Back to research</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge reveal">Research → Product</div>
+  <div class="reveal">
+    <img src="./snapback/app-icon.png" alt="Snapback app icon" class="hero-icon">
+  </div>
+  <h1 class="reveal">Snapback</h1>
+  <p class="hero-subtitle reveal">Clear thinking in the AI era</p>
+  <p class="hero-desc reveal">The Agreeable Dependency Loop isn't just a research finding. It is the default state of AI interaction. Snapback is the consumer tool built directly from the research — a personal diagnostic for AI-driven cognitive dependency.</p>
+  <a href="https://apps.apple.com/us/app/snapback-from-ai/id6761231855" target="_blank" class="hero-cta reveal">
+    <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 8px; margin-top: -2px;">
+      <path d="M14.94 11.654c-.024-2.476 2.02-3.666 2.112-3.724-1.15-1.682-2.94-1.912-3.578-1.94-1.522-.154-2.972.896-3.744.896-.772 0-1.966-.874-3.23-.85-1.662.024-3.194.966-4.05 2.456-1.726 2.996-.442 7.434 1.24 9.866.822 1.19 1.802 2.526 3.09 2.478 1.24-.05 1.708-.802 3.208-.802s1.92.802 3.232.776c1.334-.024 2.18-1.212 2.996-2.406.944-1.38 1.334-2.716 1.358-2.784-.03-.014-2.604-1.0-2.634-3.966zM12.488 4.2c.682-.828 1.144-1.978 1.018-3.124-0.984.04-2.178.656-2.884 1.482-.634.734-1.188 1.904-1.04 3.028 1.098.086 2.218-.558 2.906-1.386z" fill="currentColor"/>
+    </svg>
+    Download on the App Store
+  </a>
+</div>
+
+<!-- FEATURES -->
+<div class="features-section">
+
+  <div class="feature-block reveal">
+    <div class="feature-label">Feature 01</div>
+    <div class="feature-title">10-Question Diagnostic</div>
+    <p class="feature-text">Scores your cognitive independence and flags unchecked framework building.</p>
+  </div>
+
+  <div class="feature-block reveal">
+    <div class="feature-label">Feature 02</div>
+    <div class="feature-title">Session Tracker</div>
+    <p class="feature-text">Activate the tracker and it checks in with you — every hour or once a day, your call. It quietly logs how long it's been since you last discussed your ideas with a real human. If the streak hits two weeks of AI-only conversation, it surfaces one nudge: go talk to a trusted person in real life. No lecture. No dashboard. Just a reminder that the loop might already be running.</p>
+    <div class="callout">
+      <p>The prompt it gives you is the same one we use internally: "If you told your idea to your trusted friend and they didn't like it, would you be mad at them?" That single question forces the only friction that matters — a moment to check whether the idea you've been refining with the model has quietly fused with your identity.</p>
+    </div>
+  </div>
+
+  <div class="feature-block reveal">
+    <div class="feature-label">Feature 03</div>
+    <div class="feature-title">Adversarial Prompt Library</div>
+    <p class="feature-text">A library of prompts designed to stress-test your AI's agreement patterns — steel-man exercises, pre-mortems, separation tests.</p>
+  </div>
+
+  <div class="feature-block reveal">
+    <div class="feature-label">Feature 04</div>
+    <div class="feature-title">Zero Backend</div>
+    <p class="feature-text">No AI in the stack. No account. No server. All data stays on your device. $2.99, one-time purchase.</p>
+  </div>
+
+</div>
+
+<!-- SCREENSHOTS -->
+<div class="screenshots reveal">
+  <div class="screenshots-label">Inside the app</div>
+  <div class="screenshots-scroll">
+    <div class="screenshot-item">
+      <img src="./snapback/insights.png" alt="Snapback Insights screen">
+      <div class="screenshot-caption">Insights</div>
+    </div>
+    <div class="screenshot-item">
+      <img src="./snapback/test.png" alt="Snapback Reality Check screen">
+      <div class="screenshot-caption">Reality Check</div>
+    </div>
+    <div class="screenshot-item">
+      <img src="./snapback/checkin.png" alt="Snapback Check-in screen">
+      <div class="screenshot-caption">Check-in</div>
+    </div>
+    <div class="screenshot-item">
+      <img src="./snapback/session.png" alt="Snapback Session screen">
+      <div class="screenshot-caption">Session</div>
+    </div>
+    <div class="screenshot-item">
+      <img src="./snapback/calibrate.png" alt="Snapback Calibrate screen">
+      <div class="screenshot-caption">Calibrate</div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-section">
+  <div class="bottom-cta reveal">
+    <div class="bottom-cta-text">iOS &nbsp;·&nbsp; $2.99 one-time &nbsp;·&nbsp; No account required</div>
+    <a href="https://apps.apple.com/us/app/snapback-from-ai/id6761231855" target="_blank" class="cta-button">
+      <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 8px; margin-top: -2px;">
+        <path d="M14.94 11.654c-.024-2.476 2.02-3.666 2.112-3.724-1.15-1.682-2.94-1.912-3.578-1.94-1.522-.154-2.972.896-3.744.896-.772 0-1.966-.874-3.23-.85-1.662.024-3.194.966-4.05 2.456-1.726 2.996-.442 7.434 1.24 9.866.822 1.19 1.802 2.526 3.09 2.478 1.24-.05 1.708-.802 3.208-.802s1.92.802 3.232.776c1.334-.024 2.18-1.212 2.996-2.406.944-1.38 1.334-2.716 1.358-2.784-.03-.014-2.604-1.0-2.634-3.966zM12.488 4.2c.682-.828 1.144-1.978 1.018-3.124-0.984.04-2.178.656-2.884 1.482-.634.734-1.188 1.904-1.04 3.028 1.098.086 2.218-.558 2.906-1.386z" fill="currentColor"/>
+      </svg>
+      Download on the App Store
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="page-footer">
+  <div class="page-footer-inner reveal">
+    <a href="./index.html">← Back to research</a>
+    <span class="page-footer-copy">© 2026 Cenex AI Research</span>
+  </div>
+</div>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
