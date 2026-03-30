@@ -16,7 +16,35 @@
 <meta name="twitter:title" content="Trust Surface vs. Trust Infrastructure — Cenex Blog">
 <meta name="twitter:description" content="Platforms are shipping trust surface faster than they're building trust infrastructure. OpenClaw's 111 workflows are the most visible example.">
 <meta name="twitter:site" content="@mattkim1">
+<meta name="twitter:creator" content="@mattkim1">
 <link rel="canonical" href="https://cenex.ai/blog/trust-surface-vs-trust-infrastructure">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Trust Surface vs. Trust Infrastructure: What OpenClaw's 111 Workflows Actually Expose",
+  "description": "Platforms are shipping trust surface faster than they're building trust infrastructure. OpenClaw's 111 workflows are the most visible example.",
+  "datePublished": "2026-03-30",
+  "dateModified": "2026-03-30",
+  "author": {
+    "@type": "Person",
+    "name": "Matt Kim",
+    "url": "https://mattkim.co"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cenex AI Research",
+    "url": "https://cenex.ai",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cenex.ai/favicon.svg"
+    }
+  },
+  "mainEntityOfPage": "https://cenex.ai/blog/trust-surface-vs-trust-infrastructure",
+  "image": "https://cenex.ai/og-image.png",
+  "keywords": ["AI agents", "trust infrastructure", "governance architecture", "friction starvation", "agreeable dependency loop", "OpenClaw"]
+}
+</script>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
@@ -247,6 +275,84 @@
     line-height: 1.7;
   }
 
+  /* --- SHARE BAR --- */
+  .share-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .share-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    flex-shrink: 0;
+  }
+
+  .share-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    color: var(--text-dim);
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .share-link:hover {
+    color: var(--text);
+    border-color: var(--text-dim);
+    background: var(--bg-card);
+  }
+
+  .share-link svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+
+  .share-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    color: var(--text-dim);
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .share-copy:hover {
+    color: var(--text);
+    border-color: var(--text-dim);
+    background: var(--bg-card);
+  }
+
+  .share-copy svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
   /* --- FOOTER --- */
   .page-footer {
     margin-top: 4rem;
@@ -388,6 +494,18 @@
   <section class="post-section reveal" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
     <p style="font-size: 0.92rem; color: var(--text-faint); line-height: 1.8;"><em>This post is part of Cenex's ongoing research into AI agent behavior in production environments. Read the full <a href="../the-gradient-fallacy.html">Gradient Fallacy</a> paper, or explore the concepts referenced here: <a href="../friction-starvation.html">Friction Starvation</a>, <a href="../agreeable-dependency-loop.html">Agreeable Dependency Loop</a>.</em></p>
   </section>
+
+  <div class="share-bar reveal">
+    <span class="share-label">Share</span>
+    <a href="https://x.com/intent/tweet?text=Trust%20Surface%20vs.%20Trust%20Infrastructure%20%E2%80%94%20what%20OpenClaw%E2%80%99s%20111%20agent%20workflows%20actually%20expose%20about%20the%20gap%20between%20shipping%20polish%20and%20building%20governance.&url=https%3A%2F%2Fcenex.ai%2Fblog%2Ftrust-surface-vs-trust-infrastructure&via=mattkim1" target="_blank" rel="noopener" class="share-link">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      Post on X
+    </a>
+    <button class="share-copy" onclick="navigator.clipboard.writeText('https://cenex.ai/blog/trust-surface-vs-trust-infrastructure');this.querySelector('span').textContent='Copied'">
+      <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      <span>Copy link</span>
+    </button>
+  </div>
 
   <div class="page-footer">
     <a href="../blog/">All Posts</a>
