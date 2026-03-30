@@ -11,6 +11,8 @@ Static HTML site for Cenex AI Research, hosted on Vercel at cenex.ai. No framewo
 - `capability-correlated-agreeableness.html` — CCA term definition page
 - `half-life-thesis.html` — Half-Life thesis research preview
 - `child-brain-thesis.html` — Full Child Brain Thesis paper
+- `blog/index.html` — Blog listing page
+- `blog/trust-surface-vs-trust-infrastructure.html` — First blog post (OpenClaw / trust surface analysis)
 - `snapback.html` — Snapback product page (deeper than landing section)
 - `snapback/` — Snapback screenshots and app icon
 - `404.html` — Branded 404 page
@@ -42,6 +44,15 @@ Static HTML site for Cenex AI Research, hosted on Vercel at cenex.ai. No framewo
 - GitHub: github.com/matt10009/cenex-landing
 - Vercel auto-deploys on push to main
 - Domain: cenex.ai
+
+## Adding Blog Posts
+1. Copy from `blog/trust-surface-vs-trust-infrastructure.html` as template
+2. Use `post-label`, `post-date`, `post-section` classes — same design system as papers but with `Blog` label
+3. Topbar links back to `../blog/` (not research). Footer has "All Posts" + "Research Home"
+4. Internal links to existing pages use `../` relative paths (e.g., `../friction-starvation.html`)
+5. Add a new `<a class="post-item">` entry to `blog/index.html` (newest first)
+6. Add SEO meta tags, canonical URL, Vercel Analytics script
+7. Update `sitemap.xml` with the new post URL
 
 ## Adding New Pages
 1. For full papers, copy from `the-gradient-fallacy.html` or `child-brain-thesis.html`. For shorter term pages, copy from `friction-starvation.html` or `capability-correlated-agreeableness.html`

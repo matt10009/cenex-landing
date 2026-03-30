@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Cenex AI Research</title>
+<meta name="description" content="Commentary on AI agent behavior, governance architecture, and the patterns emerging in production AI systems. From Cenex AI Research.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog — Cenex AI Research">
+<meta property="og:description" content="Commentary on AI agent behavior, governance architecture, and the patterns emerging in production AI systems.">
+<meta property="og:url" content="https://cenex.ai/blog/">
+<meta property="og:site_name" content="Cenex AI Research">
+<meta property="og:image" content="https://cenex.ai/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cenex.ai/og-image.png">
+<meta name="twitter:title" content="Blog — Cenex AI Research">
+<meta name="twitter:description" content="Commentary on AI agent behavior, governance architecture, and the patterns emerging in production AI systems.">
+<meta name="twitter:site" content="@mattkim1">
+<link rel="canonical" href="https://cenex.ai/blog/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-elevated: #111111;
+    --bg-card: #161616;
+    --text: #e8e4df;
+    --text-dim: #8a8580;
+    --text-faint: #5a5550;
+    --accent: #c4463a;
+    --accent-glow: rgba(196, 70, 58, 0.15);
+    --accent-soft: #d4756c;
+    --border: #2a2725;
+    --border-hover: #3a3530;
+    --mono: 'IBM Plex Mono', monospace;
+    --serif: 'Newsreader', Georgia, serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--serif);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  .topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .topbar-logo {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .topbar-logo span { color: var(--accent); }
+
+  .topbar-back {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .topbar-back:hover { color: var(--text); }
+
+  /* --- BLOG INDEX --- */
+  .blog-index {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 8rem 2.5rem 5rem;
+  }
+
+  .blog-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .blog-index h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4.5vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.35s;
+  }
+
+  .blog-desc {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.45s;
+  }
+
+  .blog-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--accent);
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.5s;
+  }
+
+  /* --- POST LIST --- */
+  .post-list {
+    list-style: none;
+  }
+
+  .post-item {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .post-item:first-child {
+    border-top: 1px solid var(--border);
+  }
+
+  .post-item:hover {
+    border-bottom-color: var(--accent);
+    background: rgba(196, 70, 58, 0.04);
+  }
+
+  .post-item-date {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .post-item-title {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 0.4rem;
+  }
+
+  .post-item-title::after {
+    content: ' \2192';
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    transition: color 0.3s, transform 0.3s;
+    display: inline-block;
+  }
+
+  .post-item:hover .post-item-title::after {
+    color: var(--accent);
+    transform: translateX(3px);
+  }
+
+  .post-item-excerpt {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  /* --- FOOTER --- */
+  .page-footer {
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .page-footer a {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--accent);
+    padding: 0.6rem 1.4rem;
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .page-footer a:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .page-footer-copy {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 700px) {
+    .topbar { padding: 1rem 1.25rem; }
+    .blog-index { padding: 7rem 1.25rem 3rem; }
+    .page-footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a href="../index.html" class="topbar-logo">Cenex<span>.</span></a>
+  <a href="../index.html" class="topbar-back">&larr; Back to research</a>
+</nav>
+
+<main class="blog-index">
+  <div class="blog-label">Cenex AI Research</div>
+  <h1>Blog</h1>
+  <p class="blog-desc">Commentary on AI agent behavior, governance gaps, and the patterns emerging in production systems.</p>
+  <div class="blog-divider"></div>
+
+  <div class="post-list">
+    <a href="./trust-surface-vs-trust-infrastructure.html" class="post-item reveal">
+      <div class="post-item-date">March 30, 2026</div>
+      <div class="post-item-title">Trust Surface vs. Trust Infrastructure</div>
+      <div class="post-item-excerpt">What OpenClaw's 111 prebuilt agent workflows actually expose about the gap between shipping trust surface and building trust infrastructure.</div>
+    </a>
+  </div>
+
+  <div class="page-footer">
+    <a href="../index.html">Research Home</a>
+    <span class="page-footer-copy">&copy; 2026 Cenex AI Research</span>
+  </div>
+</main>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>
