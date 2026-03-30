@@ -239,9 +239,9 @@
 
   .diagnostic-row {
     display: flex;
-    justify-content: space-between;
+    gap: 1.5rem;
     align-items: baseline;
-    padding: 0.6rem 0;
+    padding: 0.85rem 0;
     border-bottom: 1px solid var(--border);
   }
 
@@ -251,12 +251,15 @@
     font-family: var(--serif);
     font-size: 0.9rem;
     color: var(--text-dim);
+    flex: 0 0 45%;
   }
 
   .diagnostic-result {
     font-family: var(--mono);
     font-size: 0.75rem;
     letter-spacing: 0.05em;
+    flex: 1;
+    text-align: right;
   }
 
   .diagnostic-result.link {
