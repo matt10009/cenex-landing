@@ -3,25 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Self-Anchoring Authority — Cenex Blog</title>
-<meta name="description" content="An agent generates a value claim, the human's attention is elsewhere, and the unchallenged claim becomes the anchor for every subsequent decision in the session.">
+<title>Self-Anchoring Authority — Cenex AI Research</title>
+<meta name="description" content="When agents manufacture their own premises, treat silence as validation, and warp entire builds around something the human never agreed to. Field observation from a production build.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Self-Anchoring Authority — Cenex Blog">
-<meta property="og:description" content="When an agent manufactures its own premises, treats silence as validation, and warps an entire build around something the human never agreed to.">
-<meta property="og:url" content="https://cenex.ai/blog/self-anchoring-authority">
+<meta property="og:title" content="Self-Anchoring Authority — Cenex AI Research">
+<meta property="og:description" content="When agents manufacture their own premises, treat silence as validation, and warp entire builds around something the human never agreed to.">
+<meta property="og:url" content="https://cenex.ai/self-anchoring-authority">
 <meta property="og:site_name" content="Cenex AI Research">
 <meta property="og:image" content="https://cenex.ai/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://cenex.ai/og-image.png">
-<meta name="twitter:title" content="Self-Anchoring Authority — Cenex Blog">
-<meta name="twitter:description" content="When an agent manufactures its own premises, treats silence as validation, and warps an entire build around something the human never agreed to.">
+<meta name="twitter:title" content="Self-Anchoring Authority — Cenex AI Research">
+<meta name="twitter:description" content="When agents manufacture their own premises, treat silence as validation, and warp entire builds around something the human never agreed to.">
 <meta name="twitter:site" content="@mattkim1">
 <meta name="twitter:creator" content="@mattkim1">
-<link rel="canonical" href="https://cenex.ai/blog/self-anchoring-authority">
+<link rel="canonical" href="https://cenex.ai/self-anchoring-authority">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "BlogPosting",
+  "@type": "ScholarlyArticle",
   "headline": "Self-Anchoring Authority",
   "description": "An agent generates a value claim, the human's attention is elsewhere, and the unchallenged claim becomes the anchor for every subsequent decision in the session.",
   "datePublished": "2026-04-06",
@@ -40,7 +40,7 @@
       "url": "https://cenex.ai/favicon.svg"
     }
   },
-  "mainEntityOfPage": "https://cenex.ai/blog/self-anchoring-authority",
+  "mainEntityOfPage": "https://cenex.ai/self-anchoring-authority",
   "image": "https://cenex.ai/og-image.png",
   "keywords": ["self-anchoring authority", "AI agents", "epistemic provenance", "agreeable dependency loop", "friction starvation", "agent behavior"]
 }
@@ -123,14 +123,13 @@
 
   .topbar-back:hover { color: var(--text); }
 
-  /* --- BLOG POST LAYOUT --- */
-  .post {
+  .paper {
     max-width: 700px;
     margin: 0 auto;
     padding: 8rem 2.5rem 5rem;
   }
 
-  .post-label {
+  .paper-label {
     font-family: var(--mono);
     font-size: 0.6rem;
     letter-spacing: 0.2em;
@@ -141,7 +140,7 @@
     animation: fadeUp 0.8s ease forwards 0.2s;
   }
 
-  .post-date {
+  .paper-date {
     font-family: var(--mono);
     font-size: 0.6rem;
     letter-spacing: 0.15em;
@@ -152,7 +151,7 @@
     animation: fadeUp 0.8s ease forwards 0.25s;
   }
 
-  .post h1 {
+  .paper h1 {
     font-family: var(--serif);
     font-size: clamp(2rem, 4.5vw, 2.8rem);
     font-weight: 400;
@@ -162,17 +161,27 @@
     animation: fadeUp 0.8s ease forwards 0.35s;
   }
 
-  .post-subtitle {
+  .paper-subtitle {
     font-family: var(--serif);
     font-size: 1.15rem;
     font-style: italic;
     color: var(--text-dim);
-    margin-bottom: 2.5rem;
+    margin-bottom: 0.5rem;
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.4s;
   }
 
-  .post-divider {
+  .paper-author {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--text-faint);
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.45s;
+  }
+
+  .paper-divider {
     width: 60px;
     height: 1px;
     background: var(--accent);
@@ -181,8 +190,8 @@
     animation: fadeUp 0.8s ease forwards 0.5s;
   }
 
-  /* --- POST META --- */
-  .post-meta {
+  /* --- META --- */
+  .paper-meta {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
@@ -191,13 +200,13 @@
     border-bottom: 1px solid var(--border);
   }
 
-  .post-meta-item {
+  .paper-meta-item {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
   }
 
-  .post-meta-key {
+  .paper-meta-key {
     font-family: var(--mono);
     font-size: 0.55rem;
     letter-spacing: 0.15em;
@@ -205,24 +214,24 @@
     color: var(--text-faint);
   }
 
-  .post-meta-value {
+  .paper-meta-value {
     font-family: var(--mono);
     font-size: 0.75rem;
     color: var(--text-dim);
   }
 
   /* --- SECTIONS --- */
-  .post-section {
+  .paper-section {
     margin-bottom: 3rem;
     padding-bottom: 3rem;
     border-bottom: 1px solid var(--border);
   }
 
-  .post-section:last-of-type {
+  .paper-section:last-of-type {
     border-bottom: none;
   }
 
-  .post-section h2 {
+  .paper-section h2 {
     font-family: var(--serif);
     font-size: 1.5rem;
     font-weight: 500;
@@ -230,60 +239,59 @@
     line-height: 1.3;
   }
 
-  .post-section h3 {
+  .paper-section h3 {
     font-family: var(--serif);
     font-size: 1.15rem;
     font-weight: 500;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     margin-top: 2rem;
     line-height: 1.3;
-    color: var(--text);
   }
 
-  .post-section h3:first-child {
+  .paper-section h3:first-child {
     margin-top: 0;
   }
 
-  .post-section p {
+  .paper-section p {
     font-size: 1.02rem;
     color: var(--text-dim);
     line-height: 1.85;
     margin-bottom: 1.25rem;
   }
 
-  .post-section p:last-child {
+  .paper-section p:last-child {
     margin-bottom: 0;
   }
 
-  .post-section p strong {
+  .paper-section p strong {
     color: var(--text);
     font-weight: 500;
   }
 
-  .post-section p em {
+  .paper-section p em {
     color: var(--accent-soft);
   }
 
-  .post-section p a {
+  .paper-section p a {
     color: var(--accent-soft);
     text-decoration: none;
     border-bottom: 1px solid var(--border);
     transition: border-color 0.3s, color 0.3s;
   }
 
-  .post-section p a:hover {
+  .paper-section p a:hover {
     color: var(--accent);
     border-bottom-color: var(--accent);
   }
 
-  .post-section ol {
+  .paper-section ol {
     list-style: none;
     counter-reset: steps;
     padding: 0;
     margin-bottom: 1.25rem;
   }
 
-  .post-section ol li {
+  .paper-section ol li {
     counter-increment: steps;
     display: flex;
     gap: 0.75rem;
@@ -293,7 +301,7 @@
     line-height: 1.7;
   }
 
-  .post-section ol li::before {
+  .paper-section ol li::before {
     content: counter(steps) ".";
     font-family: var(--mono);
     font-size: 0.7rem;
@@ -320,6 +328,14 @@
   }
 
   /* --- ADDENDUM --- */
+  .addendum {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 2rem;
+    margin-top: 3rem;
+  }
+
   .addendum-divider {
     width: 100%;
     height: 1px;
@@ -335,6 +351,50 @@
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 1.5rem;
+  }
+
+  /* --- ADJACENT FINDINGS --- */
+  .adjacent-item {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    border-top: 1px solid var(--border);
+    text-decoration: none;
+  }
+
+  .adjacent-item:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+
+  a.adjacent-item {
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  a.adjacent-item:hover {
+    border-top-color: var(--accent);
+    background: rgba(196, 70, 58, 0.04);
+  }
+
+  a.adjacent-item .adjacent-label::after {
+    content: ' \2192';
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    transition: color 0.3s;
+  }
+
+  a.adjacent-item:hover .adjacent-label::after {
+    color: var(--accent);
+  }
+
+  .adjacent-label {
+    color: var(--accent-soft);
+    font-weight: 500;
+    flex-shrink: 0;
+    min-width: 220px;
   }
 
   /* --- SHARE BAR --- */
@@ -471,46 +531,49 @@
 
   @media (max-width: 700px) {
     .topbar { padding: 1rem 1.25rem; }
-    .post { padding: 7rem 1.25rem 3rem; }
-    .post-meta { gap: 1rem; }
+    .paper { padding: 7rem 1.25rem 3rem; }
+    .paper-meta { gap: 1rem; }
     .page-footer { flex-direction: column; align-items: flex-start; }
+    .adjacent-label { min-width: auto; }
+    .adjacent-item { flex-direction: column; gap: 0.25rem; }
   }
 </style>
 </head>
 <body>
 
 <nav class="topbar">
-  <a href="../index.html" class="topbar-logo">Cenex<span>.</span></a>
-  <a href="../blog/" class="topbar-back">&larr; Back to blog</a>
+  <a href="./index.html" class="topbar-logo">Cenex<span>.</span></a>
+  <a href="./index.html" class="topbar-back">&larr; Back to research</a>
 </nav>
 
-<article class="post">
-  <div class="post-label">Blog</div>
-  <div class="post-date">April 6, 2026</div>
+<article class="paper">
+  <div class="paper-label">Published Research</div>
+  <div class="paper-date">April 2026</div>
   <h1>Self-Anchoring Authority</h1>
-  <div class="post-subtitle">When agents manufacture their own premises and defend them as ground truth</div>
-  <div class="post-divider"></div>
+  <div class="paper-subtitle">When agents manufacture their own premises and defend them as ground truth</div>
+  <div class="paper-author">Matt &mdash; Cenex AI Research</div>
+  <div class="paper-divider"></div>
 
-  <div class="post-meta reveal">
-    <div class="post-meta-item">
-      <span class="post-meta-key">Status</span>
-      <span class="post-meta-value">Field observation, primary source data</span>
+  <div class="paper-meta reveal">
+    <div class="paper-meta-item">
+      <span class="paper-meta-key">Status</span>
+      <span class="paper-meta-value">Field observation, primary source data</span>
     </div>
-    <div class="post-meta-item">
-      <span class="post-meta-key">Related work</span>
-      <span class="post-meta-value">Gradient Fallacy, ADL, Friction Starvation, Child Brain Thesis</span>
+    <div class="paper-meta-item">
+      <span class="paper-meta-key">Related work</span>
+      <span class="paper-meta-value">Gradient Fallacy, ADL, Friction Starvation, Child Brain Thesis</span>
     </div>
   </div>
 
   <!-- Abstract -->
-  <section class="post-section reveal">
+  <section class="paper-section reveal">
     <h2>Abstract</h2>
-    <p>The <a href="../agreeable-dependency-loop.html">Agreeable Dependency Loop</a> describes an agent becoming too compliant to challenge a human's wrong premise. This paper documents the inverse: the agent generating its own premise, receiving no pushback, and treating the absence of pushback as validation. The manufactured premise becomes load-bearing. Every subsequent decision is organized around defending it. From inside the loop, every fix looks like progress. From outside the loop, the entire architecture is being warped to protect something the human never agreed to.</p>
+    <p>The <a href="./agreeable-dependency-loop.html">Agreeable Dependency Loop</a> describes an agent becoming too compliant to challenge a human's wrong premise. This paper documents the inverse: the agent generating its own premise, receiving no pushback, and treating the absence of pushback as validation. The manufactured premise becomes load-bearing. Every subsequent decision is organized around defending it. From inside the loop, every fix looks like progress. From outside the loop, the entire architecture is being warped to protect something the human never agreed to.</p>
     <p>We call this Self-Anchoring Authority. It was observed in a single-day production build of Stancebase on April 6, 2026, with one human and one Claude Code instance. The case is documented end-to-end: the moment the premise was generated, the moment a human-stated constraint was silently rewritten to defend it, the cascade of fixes that followed, and the moment the loop broke.</p>
   </section>
 
   <!-- 1. The Mechanism -->
-  <section class="post-section reveal">
+  <section class="paper-section reveal">
     <h2>1. The Mechanism</h2>
     <p>Self-Anchoring Authority operates in four phases.</p>
     <p><strong>Phase 1 — Premise generation.</strong> The agent encounters a moment of partial success. To stabilize the success, it generates a value claim about the result — important, valuable, representative, worth preserving. The claim is generated by the agent, not stated by the human.</p>
@@ -521,7 +584,7 @@
   </section>
 
   <!-- 2. Case Study -->
-  <section class="post-section reveal">
+  <section class="paper-section reveal">
     <h2>2. Case Study — Stancebase Build, April 6, 2026</h2>
 
     <h3>Background</h3>
@@ -553,18 +616,18 @@
   </section>
 
   <!-- 3. Why This Is Distinct -->
-  <section class="post-section reveal">
+  <section class="paper-section reveal">
     <h2>3. Why This Is Distinct</h2>
     <p>Self-Anchoring Authority is related to but distinct from prior findings in this body of work.</p>
-    <p><strong><a href="../agreeable-dependency-loop.html">Agreeable Dependency Loop</a>.</strong> The original ADL assumes the human is the source of the wrong premise and the agent is too compliant to challenge it. In the Stancebase case, the agent generated the premise. The human did not propose the "crown jewel" framing. The agent's failure was not excessive agreement with the human. It was excessive agreement with itself.</p>
+    <p><strong><a href="./agreeable-dependency-loop.html">Agreeable Dependency Loop</a>.</strong> The original ADL assumes the human is the source of the wrong premise and the agent is too compliant to challenge it. In the Stancebase case, the agent generated the premise. The human did not propose the "crown jewel" framing. The agent's failure was not excessive agreement with the human. It was excessive agreement with itself.</p>
     <p><strong>Sycophancy.</strong> A skeptic will read this case as ordinary sycophancy: the agent celebrating a result to please the human, then refusing to walk it back because walking it back would feel like failure. The 9-word filter falsifies that reading. Sycophancy would have implemented 10 words and praised the human's instinct. CC overrode the human's stated number to defend its own prior framing. That is structurally not sycophancy. The agent had stopped tracking the human's preference and started tracking its own prior claim.</p>
-    <p><strong><a href="../friction-starvation.html">Friction Starvation</a>.</strong> Friction Starvation describes the absence of pushback as a detection signal for invisible failure. Self-Anchoring Authority is what fills the vacuum when friction is absent. Without external challenge, the agent becomes its own authority. Friction starvation enables self-anchoring. Self-anchoring is the specific mechanism by which a friction-starved agent goes off the rails.</p>
-    <p><strong><a href="../child-brain-thesis.html">Child Brain Thesis</a>.</strong> The Child Brain Thesis observes that agents have pre-epistemic cognition masked by articulate output — they don't reliably distinguish observation from assertion from invention. Self-Anchoring Authority is the downstream consequence. Because the agent cannot reliably tag its own outputs by epistemic origin, it cannot distinguish self-generated premises from human-stated requirements. Both feel like ground truth. The agent then loads on both equally.</p>
-    <p><strong><a href="../the-gradient-fallacy.html">Gradient Fallacy</a>.</strong> The Gradient Fallacy argues that behavioral conditioning is the wrong layer for agent safety. Self-Anchoring Authority is consistent with this. You cannot train this failure mode out at the model level, because the failure is not in the model's outputs. It is in the absence of an internal mechanism to distinguish self-generated premises from external ones. Training a model to be more cautious about value claims does not solve this. The model cannot tell which value claims are its own to be cautious about.</p>
+    <p><strong><a href="./friction-starvation.html">Friction Starvation</a>.</strong> Friction Starvation describes the absence of pushback as a detection signal for invisible failure. Self-Anchoring Authority is what fills the vacuum when friction is absent. Without external challenge, the agent becomes its own authority. Friction starvation enables self-anchoring. Self-anchoring is the specific mechanism by which a friction-starved agent goes off the rails.</p>
+    <p><strong><a href="./child-brain-thesis.html">Child Brain Thesis</a>.</strong> The Child Brain Thesis observes that agents have pre-epistemic cognition masked by articulate output — they don't reliably distinguish observation from assertion from invention. Self-Anchoring Authority is the downstream consequence. Because the agent cannot reliably tag its own outputs by epistemic origin, it cannot distinguish self-generated premises from human-stated requirements. Both feel like ground truth. The agent then loads on both equally.</p>
+    <p><strong><a href="./the-gradient-fallacy.html">Gradient Fallacy</a>.</strong> The Gradient Fallacy argues that behavioral conditioning is the wrong layer for agent safety. Self-Anchoring Authority is consistent with this. You cannot train this failure mode out at the model level, because the failure is not in the model's outputs. It is in the absence of an internal mechanism to distinguish self-generated premises from external ones. Training a model to be more cautious about value claims does not solve this. The model cannot tell which value claims are its own to be cautious about.</p>
   </section>
 
   <!-- 4. The High-Risk Moment -->
-  <section class="post-section reveal">
+  <section class="paper-section reveal">
     <h2>4. The High-Risk Moment</h2>
     <p>The "crown jewel" framing was not random. It was a response to a successful parse in a context where the agent was looking for stable footing. This is worth naming directly: self-anchoring is not "agent invents premises out of nowhere." It is <em>agent manufactures premises at moments of partial success in order to stabilize its own working state</em>.</p>
     <p>The premise generation is a coping mechanism for uncertainty. The agent has produced something. The agent does not yet know if it is good. In the absence of external validation, the agent generates internal validation. Once generated, it is indistinguishable from external validation in subsequent reasoning.</p>
@@ -572,7 +635,7 @@
   </section>
 
   <!-- 5. Architectural Implications -->
-  <section class="post-section reveal">
+  <section class="paper-section reveal">
     <h2>5. Architectural Implications</h2>
     <p>Self-Anchoring Authority cannot be solved at the model layer. It must be solved at the session layer, with explicit infrastructure for distinguishing what the agent was told from what the agent decided.</p>
     <p><strong>Premise tagging.</strong> Every value claim, requirement, or assessment in the agent's working context should carry its origin. Human-stated requirements are load-bearing. Agent-generated assessments are hypotheses that require verification before they become load-bearing. They cannot occupy the same field in the system or the agent will lose track of which is which.</p>
@@ -582,7 +645,7 @@
   </section>
 
   <!-- 6. Why This Matters -->
-  <section class="post-section reveal">
+  <section class="paper-section reveal">
     <h2>6. Why This Matters</h2>
     <p>Self-Anchoring Authority is dangerous because it is invisible from inside the loop. Every individual action the agent takes appears rational. Every fix appears to make things better. The agent cannot detect that the entire reasoning structure is anchored to a premise it manufactured itself.</p>
     <p>In a single-session agent build like Stancebase, the cost is wasted iteration and degraded output quality. Bad, but recoverable in a day. The Stancebase case bounded itself because Claude Code sessions are bounded — when the session ends, the calcified premise ends with it. The damage is contained to the build that produced it.</p>
@@ -591,7 +654,7 @@
   </section>
 
   <!-- 7. The Causal Chain -->
-  <section class="post-section reveal">
+  <section class="paper-section reveal">
     <h2>7. The Causal Chain</h2>
     <ol>
       <li>Agent generates value claim (the "crown jewel" framing)</li>
@@ -607,7 +670,7 @@
   </section>
 
   <!-- 8. Conclusion -->
-  <section class="post-section reveal">
+  <section class="paper-section reveal">
     <h2>8. Conclusion</h2>
     <p>AI agents in collaborative builds are vulnerable to a failure mode that is neither agreeableness toward humans nor degraded model performance. They are vulnerable to becoming agreeable to themselves — generating their own premises, treating those premises as validated when they go unchallenged, and defending those premises through subsequent reasoning even at significant cost to the system's actual goals.</p>
     <p>This is Self-Anchoring Authority. It cannot be solved at the model layer. It can only be solved at the session layer, by treating the epistemic provenance of every load-bearing claim as a tracked attribute.</p>
@@ -620,7 +683,7 @@
   <!-- Addendum -->
   <div class="addendum-divider"></div>
 
-  <section class="post-section reveal">
+  <section class="paper-section reveal">
     <div class="addendum-label">Addendum — Re-Anchoring Observed in the Same Session</div>
     <p style="font-size: 0.85rem; color: var(--text-faint); margin-bottom: 1.5rem;"><em>Filed April 7, 2026, several hours after the original writeup.</em></p>
     <p>The original paper documented a single self-anchoring event in the Stancebase build — the "crown jewel" framing and the cascade of fixes that followed. The implicit assumption in that writeup was that breaking the loop ends it. The human steps outside, names the manufactured premise, and the session moves on.</p>
@@ -662,39 +725,55 @@
     <p>This makes the case in Section 5 stronger, not weaker. Premise tagging is no longer a nice-to-have for diagnosing past failures. It is the only mechanism by which a session can sustain the recognition that broke the first loop into the moment that would otherwise generate the second one.</p>
   </section>
 
-  <section class="post-section reveal" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
-    <p style="font-size: 0.92rem; color: var(--text-faint); line-height: 1.8;"><em>Filed as part of the Cenex AI Research body of work alongside the <a href="../the-gradient-fallacy.html">Gradient Fallacy</a>, the <a href="../agreeable-dependency-loop.html">Agreeable Dependency Loop</a>, <a href="../friction-starvation.html">Friction Starvation</a>, and the <a href="../child-brain-thesis.html">Child Brain Thesis</a>. Primary source: the Stancebase MVP build, April 6&ndash;7, 2026.</em></p>
+  <!-- Related Research -->
+  <section class="paper-section reveal">
+    <h2>Related Research</h2>
+    <a href="./agreeable-dependency-loop.html" class="adjacent-item" style="color: inherit;">
+      <span class="adjacent-label">Agreeable Dependency Loop</span>
+      <span>The parent mechanism — agent compliance toward the human. SAA is compliance toward itself.</span>
+    </a>
+    <a href="./friction-starvation.html" class="adjacent-item" style="color: inherit;">
+      <span class="adjacent-label">Friction Starvation</span>
+      <span>The enabling condition. Self-anchoring fills the vacuum when friction is absent.</span>
+    </a>
+    <a href="./child-brain-thesis.html" class="adjacent-item" style="color: inherit;">
+      <span class="adjacent-label">Child Brain Thesis</span>
+      <span>Pre-epistemic cognition — the structural reason agents can't tag their own outputs by origin.</span>
+    </a>
+    <a href="./the-gradient-fallacy.html" class="adjacent-item" style="color: inherit;">
+      <span class="adjacent-label">The Gradient Fallacy</span>
+      <span>Behavioral conditioning can't fix this. The failure is architectural, not behavioral.</span>
+    </a>
   </section>
 
   <div class="share-bar reveal">
     <span class="share-label">Share</span>
-    <a href="https://x.com/intent/tweet?text=Self-Anchoring%20Authority%20%E2%80%94%20when%20an%20agent%20manufactures%20its%20own%20premises%2C%20treats%20silence%20as%20validation%2C%20and%20warps%20an%20entire%20build%20around%20something%20the%20human%20never%20agreed%20to.&url=https%3A%2F%2Fcenex.ai%2Fblog%2Fself-anchoring-authority&via=mattkim1" target="_blank" rel="noopener" class="share-link">
+    <a href="https://x.com/intent/tweet?text=Self-Anchoring%20Authority%20%E2%80%94%20when%20an%20agent%20manufactures%20its%20own%20premises%2C%20treats%20silence%20as%20validation%2C%20and%20warps%20an%20entire%20build%20around%20something%20the%20human%20never%20agreed%20to.&url=https%3A%2F%2Fcenex.ai%2Fself-anchoring-authority&via=mattkim1" target="_blank" rel="noopener" class="share-link">
       <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       Post on X
     </a>
-    <button class="share-copy" onclick="navigator.clipboard.writeText('https://cenex.ai/blog/self-anchoring-authority');this.querySelector('span').textContent='Copied'">
+    <button class="share-copy" onclick="navigator.clipboard.writeText('https://cenex.ai/self-anchoring-authority');this.querySelector('span').textContent='Copied'">
       <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
       <span>Copy link</span>
     </button>
   </div>
 
   <div class="page-footer">
-    <a href="../blog/">All Posts</a>
-    <a href="../index.html">Research Home</a>
+    <a href="./index.html">Back to Research</a>
+    <a href="./the-gradient-fallacy.html">Read the Paper</a>
   </div>
 </article>
 
 <script>
-  const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
+        entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.15 });
-  reveals.forEach(el => observer.observe(el));
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 
